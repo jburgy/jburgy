@@ -11,7 +11,7 @@ I owe a debt of gratitude to Frédéric Oberson who rounded up several kids from
 neighborhood and drove us to that lab on saturday mornings.  He showed us that the only
 bounds to how far we can manipulate computers lie in our imagination!  In typical Swiss
 fashion, our final project was to draw a full screen clock and redraw its hands to keep
-time.  I seem to remember we fiddled with some sleep statements to keep it in sync.
+time.[^1]  I seem to remember we fiddled with some sleep statements to keep it in sync.
 Mind you we were in grade school and probably hadn't studied trigonometry yet.
 
 After that, my parents got me a [Commodore 64](https://en.wikipedia.org/wiki/Commodore_64)
@@ -53,6 +53,59 @@ read between the lines, some themes emerge that keep me excited to this day:
 * foreign function interfaces: calling Zig from python replaced calling FORTRAN from C
 
 If some of these interest you too, you might like [my blog](https://bur.gy)
+
+[^1]: Four decades later, I translated MIT's own MACLISP implementation of
+    Logo into vanilla ES6 and [recreated that clock](https://bur.gy/tortue/)
+    ([source](https://github.com/jburgy/tortue)) — still no procedures,
+    still no recursion, still a `SLEEP` fudge factor. Here's the whole
+    thing:
+
+    ```logo
+    ; tortue clock — a watch face with 12 ticks and an animated seconds
+    ; hand shaped like a kite, longer toward the time it points to.
+
+    REPEAT 12 [
+      PENUP FORWARD 240 PENDOWN
+      REPEAT 2 [
+        FORWARD 40 RIGHT 90 FORWARD 10 RIGHT 90
+      ]
+      PENUP BACK 240 RIGHT 30
+    ]
+
+    MAKE "SECONDS 0
+    MAKE "DRAWN "FALSE
+
+    FOREVER [
+      IF :DRAWN = "TRUE [
+        PENERASE
+        PENUP
+        SETXY (200 * :S) (200 * :C)
+        PENDOWN
+        SETXY (14 * :C) (0 - 14 * :S)
+        SETXY (0 - 30 * :S) (0 - 30 * :C)
+        SETXY (0 - 14 * :C) (14 * :S)
+        SETXY (200 * :S) (200 * :C)
+        PENUP
+        HOME
+      ]
+      PENPAINT
+      MAKE "H :SECONDS * 6
+      MAKE "S SINE :H
+      MAKE "C COSINE :H
+      PENUP
+      SETXY (200 * :S) (200 * :C)
+      PENDOWN
+      SETXY (14 * :C) (0 - 14 * :S)
+      SETXY (0 - 30 * :S) (0 - 30 * :C)
+      SETXY (0 - 14 * :C) (14 * :S)
+      SETXY (200 * :S) (200 * :C)
+      PENUP
+      HOME
+      MAKE "DRAWN "TRUE
+      SLEEP 0.95
+      MAKE "SECONDS REMAINDER (:SECONDS + 1) 60
+    ]
+    ```
 
 <!--
 **jburgy/jburgy** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
