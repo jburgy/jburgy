@@ -61,14 +61,6 @@ If some of these interest you too, you might like [my blog](https://bur.gy)
     thing:
 
     ```logo
-    ; tortue clock — a watch face with 12 ticks and a kite-shaped
-    ; seconds hand, drawn with nothing but FORWARD, BACK, LEFT, and RIGHT —
-    ; no SETXY, no SINE/COSINE, no absolute coordinates anywhere. The
-    ; turtle's own heading IS the hand's angle: RIGHT 6 sweeps it one tick,
-    ; and erasing is the exact reverse of painting (same vertices, opposite
-    ; order, inverted turns/moves), so it always lands back on center with
-    ; zero residual drift.
-
     REPEAT 12 [
       PENUP FORWARD 240
       RIGHT 90 BACK 5 LEFT 90
