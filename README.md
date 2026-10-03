@@ -66,9 +66,7 @@ If some of these interest you too, you might like [my blog](https://bur.gy)
 
     REPEAT 12 [
       PENUP FORWARD 240 PENDOWN
-      REPEAT 2 [
-        FORWARD 40 RIGHT 90 FORWARD 10 RIGHT 90
-      ]
+      REPEAT 2 [ FORWARD 40 RIGHT 90 FORWARD 10 RIGHT 90 ]
       PENUP BACK 240 RIGHT 30
     ]
 
