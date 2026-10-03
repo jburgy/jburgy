@@ -71,26 +71,7 @@ If some of these interest you too, you might like [my blog](https://bur.gy)
       BACK 240 RIGHT 30
     ]
 
-    MAKE "DRAWN "FALSE
-
     FOREVER [
-      IF :DRAWN = "TRUE [
-        PENERASE
-        PENUP
-        FORWARD 200
-        RIGHT 4
-        PENDOWN
-        BACK 200
-        LEFT 29
-        BACK 33
-        LEFT 130
-        BACK 33
-        LEFT 29
-        BACK 200
-        LEFT 176
-        PENUP
-        BACK 200
-      ]
       PENPAINT
       RIGHT 6
       PENUP
@@ -107,8 +88,22 @@ If some of these interest you too, you might like [my blog](https://bur.gy)
       PENUP
       LEFT 4
       BACK 200
-      MAKE "DRAWN "TRUE
       SLEEP 0.994
+      PENERASE
+      PENUP
+      FORWARD 200
+      RIGHT 4
+      PENDOWN
+      BACK 200
+      LEFT 29
+      BACK 33
+      LEFT 130
+      BACK 33
+      LEFT 29
+      BACK 200
+      LEFT 176
+      PENUP
+      BACK 200
     ]
     ```
 
